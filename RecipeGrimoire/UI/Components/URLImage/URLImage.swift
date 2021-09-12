@@ -8,38 +8,37 @@
 import SwiftUI
 
 struct URLImage: View {
-    @ObservedObject var urlImageViewModel = URLImageViewModel()
-    var recipe: Recipe
+    @ObservedObject private var urlImageViewModel: URLImageViewModel
+    
+    init(url: String?) {
+        if let url = url{
+            urlImageViewModel = URLImageManager.shared.getURLImageViewModel(url: url)
+        }
+        else{
+            urlImageViewModel = URLImageManager.shared.getURLImageViewModel(url: "")
+        }
+    }
     
     var body: some View {
-        VStack{
-            switch urlImageViewModel.urlImageState {
-            case .loading:
+        image
+            .onAppear(perform: urlImageViewModel.load)
+            .onDisappear(perform: urlImageViewModel.cancel)
+    }
+    
+    private var image: some View {
+        Group {
+            if urlImageViewModel.image != nil {
+                Image(uiImage: urlImageViewModel.image!)
+                    .resizable()
+            } else {
                 ProgressView()
-            case .loaded(let image):
-                if let uiImage = image{
-                    Image(uiImage: uiImage)
-                        .resizable()
-                }
-                else
-                {
-                    Image(systemName: "questionmark")
-                        .resizable()
-                }
             }
-        }
-        .onAppear{
-            urlImageViewModel.getImage(from: recipe.featuredImage ?? "")
         }
     }
 }
 
 struct URLImage_Previews: PreviewProvider {
     static var previews: some View {
-        URLImage(
-            urlImageViewModel: URLImageViewModel(
-                imageService: ValidLoadedImageService()
-            ),
-            recipe: Recipe.preview)
+        URLImage(url: "")
     }
 }

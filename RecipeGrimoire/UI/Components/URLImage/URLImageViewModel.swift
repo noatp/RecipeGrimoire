@@ -9,35 +9,30 @@ import Foundation
 import UIKit
 import Combine
 
-class URLImageViewModel: ObservableObject{
-    @Published var urlImageState: URLImageState = .loading
-    private var imageService: ImageService
-    private var imageSubscription: AnyCancellable?
+class URLImageViewModel: ObservableObject {
+    @Published var image: UIImage?
+    private let url: String
+    private var cancellable: AnyCancellable?
     
-    init(imageService: ImageService = ImageService()){
-        self.imageService = imageService
-        addSubscription()
+    init(url: String) {
+        self.url = url
     }
     
-    func addSubscription(){
-        imageSubscription = imageService.$imageState
-            .sink(receiveValue: { [weak self] imageState in
-                switch imageState{
-                case .loading:
-                    self?.urlImageState = .loading
-                case .loaded(let image):
-                    self?.urlImageState = .loaded(image: image)
-                }
-            })
-    }
-    
-    func getImage(from imageUrl: String){
-        imageService.getImage(from: imageUrl)
-    }
+    func load() {
+        guard let urlObject = URL(string: url)
+        else{
+            print("bad url: \(url)")
+            return
+        }
         
-    enum URLImageState{
-        case loading
-        case loaded(image: UIImage?)
+        cancellable = URLSession.shared.dataTaskPublisher(for: urlObject)
+            .map { UIImage(data: $0.data) }
+            .replaceError(with: nil)
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.image, on: self)
+    }
+    
+    func cancel() {
+        cancellable?.cancel()
     }
 }
-

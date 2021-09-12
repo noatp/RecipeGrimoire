@@ -27,8 +27,4 @@ class MockRecipeService: RecipeService{
     }
 }
 
-class ValidLoadedImageService: ImageService{
-    override func getImage(from inputUrl: String) {
-        self.imageState = .loaded(image: UIImage(named: "previewImage"))
-    }
-}
+

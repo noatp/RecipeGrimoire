@@ -12,7 +12,7 @@ struct ListItem: View {
     
     var body: some View {
         HStack{
-            URLImage(recipe: recipe)
+            URLImage(url: recipe.featuredImage)
                 .scaledToFill()
                 .frame(width: 50, height: 50)
                 .clipped()

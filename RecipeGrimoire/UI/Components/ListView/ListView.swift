@@ -18,7 +18,7 @@ struct ListView: View {
         List{
             ForEach(listViewModel.listViewState.recipeList){ recipe in
                 NavigationLink(
-                    destination: Text("SHIT"),
+                    destination: DetailView(recipe: recipe),
                     label: {
                         ListItem(recipe: recipe)
                     }
