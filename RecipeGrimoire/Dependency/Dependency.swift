@@ -22,8 +22,17 @@ class Dependency{
 }
 
 class MockRecipeService: RecipeService{
-    override func fetchRecipes(with searchTerm: String?) {
-        self.fetchRecipesState = FetchRecipesState(isLoading: false, moreRecipeAvailable: true, recipeList: Recipe.previewList)
+    init(
+        isLoading: Bool = false,
+        moreRecipeAvailable: Bool = false
+    ) {
+        super.init(
+            initFetchRecipesState: FetchRecipesState(
+                isLoading: isLoading,
+                moreRecipeAvailable: moreRecipeAvailable,
+                recipeList: Recipe.previewList
+            )
+        )
     }
 }
 

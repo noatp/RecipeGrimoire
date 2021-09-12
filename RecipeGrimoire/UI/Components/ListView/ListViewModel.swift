@@ -27,12 +27,16 @@ class ListViewModel: ObservableObject{
             })
     }
     
+    func fetchNextPage(){
+        recipeService.fetchRecipes(with: nil)
+    }
+    
     struct ListViewState{
         var isLoading: Bool
         var moreRecipeAvailable: Bool
         var recipeList: [Recipe]
         
-        static let empty = ListViewState(isLoading: false, moreRecipeAvailable: false, recipeList: [])
+        static let empty = ListViewState(isLoading: true, moreRecipeAvailable: false, recipeList: [])
     }
 }
 

@@ -11,12 +11,15 @@ import Combine
 class RecipeService: ObservableObject{
     private let jsonDecoder = JSONDecoder()
     
-    @Published var fetchRecipesState: FetchRecipesState = .empty
+    @Published var fetchRecipesState: FetchRecipesState
     private var nextPageUrl = ""
     private var currentQuery = ""
     private var urlString = ""
     private var fetchRecipesSubscription: AnyCancellable?
 
+    init(initFetchRecipesState: FetchRecipesState = .empty) {
+        self.fetchRecipesState = initFetchRecipesState
+    }
     
     func fetchRecipes(with searchTerm: String?){
         
@@ -77,6 +80,6 @@ class RecipeService: ObservableObject{
         var moreRecipeAvailable: Bool
         var recipeList: [Recipe]
         
-        static let empty = FetchRecipesState(isLoading: false, moreRecipeAvailable: false, recipeList: [])
+        static let empty = FetchRecipesState(isLoading: true, moreRecipeAvailable: false, recipeList: [])
     }
 }

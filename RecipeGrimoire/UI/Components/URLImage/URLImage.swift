@@ -40,5 +40,6 @@ struct URLImage: View {
 struct URLImage_Previews: PreviewProvider {
     static var previews: some View {
         URLImage(url: "")
+        URLImage(url: "https://nyc3.digitaloceanspaces.com/food2fork/food2fork-static/featured_images/583/featured_image.png")
     }
 }
