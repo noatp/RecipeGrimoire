@@ -18,9 +18,11 @@ struct ListView: View {
         List{
             if (listViewModel.listViewState.recipeList.isEmpty && !listViewModel.listViewState.isLoading){
                 noResultText
+                    .transition(.slide)
             }
             else if (listViewModel.listViewState.isLoading){
                 loadIndicator
+                    .transition(.scale)
             }
             else{
                 ForEach(listViewModel.listViewState.recipeList){ recipe in
@@ -34,6 +36,7 @@ struct ListView: View {
                 }
                 if(listViewModel.listViewState.moreRecipeAvailable){
                     loadIndicator
+                        .transition(.scale)
                         .onAppear{
                             listViewModel.fetchNextPage()
                         }
@@ -62,8 +65,8 @@ struct ListView: View {
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        let mockServiceLoading = MockRecipeService(isLoading: true, moreRecipeAvailable: false)
-        let dependency = Dependency(recipeService: mockServiceLoading)
+        let mockService = MockRecipeService(isLoading: false, moreRecipeAvailable: false)
+        let dependency = Dependency(recipeService: mockService)
         ListView(dependency: dependency)
     }
 }

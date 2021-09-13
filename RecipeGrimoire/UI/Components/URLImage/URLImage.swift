@@ -30,8 +30,9 @@ struct URLImage: View {
             if urlImageViewModel.image != nil {
                 Image(uiImage: urlImageViewModel.image!)
                     .resizable()
+
             } else {
-                ProgressView()
+                Image(systemName: "photo")
             }
         }
     }

@@ -21,6 +21,7 @@ class ListViewModel: ObservableObject{
     func addSubscription(){
         recipeListSubscription = recipeService.$fetchRecipesState
             .sink(receiveValue: { [weak self] fetchRecipesState in
+                print(fetchRecipesState)
                 self?.listViewState.isLoading = fetchRecipesState.isLoading
                 self?.listViewState.moreRecipeAvailable = fetchRecipesState.moreRecipeAvailable
                 self?.listViewState.recipeList = fetchRecipesState.recipeList

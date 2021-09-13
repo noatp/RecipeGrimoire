@@ -32,6 +32,8 @@
 		4526ECF926EDC7DC0030098D /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4526ECF826EDC7DC0030098D /* ListViewModel.swift */; };
 		4526ECFB26EDC89E0030098D /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4526ECFA26EDC89E0030098D /* ListView.swift */; };
 		4526ED0526EDD7C90030098D /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4526ED0426EDD7C90030098D /* ListItem.swift */; };
+		452BAB2D26EEC91700971BA7 /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452BAB2C26EEC91700971BA7 /* BookmarkView.swift */; };
+		452BAB2F26EECD3A00971BA7 /* BookmarkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452BAB2E26EECD3A00971BA7 /* BookmarkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		4526ECF826EDC7DC0030098D /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		4526ECFA26EDC89E0030098D /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		4526ED0426EDD7C90030098D /* ListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
+		452BAB2C26EEC91700971BA7 /* BookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
+		452BAB2E26EECD3A00971BA7 /* BookmarkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +189,7 @@
 		4526ECD826EDAC580030098D /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				452BAB2B26EEC8C800971BA7 /* BookmarkView */,
 				4526ECF126EDC0E40030098D /* Components */,
 				4526ECE926EDBFF00030098D /* SearchView */,
 				4526ECE226EDBA2C0030098D /* AppView */,
@@ -205,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				4526ECE026EDADEC0030098D /* RecipeService.swift */,
+				452BAB2E26EECD3A00971BA7 /* BookmarkService.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -239,7 +245,6 @@
 			isa = PBXGroup;
 			children = (
 				4506ADE126EE814400FF1F6C /* DetailView */,
-				4526ED0326EDD7BA0030098D /* ListItem */,
 				4526ECFC26EDCE0A0030098D /* URLImage */,
 				4526ECF726EDC7BC0030098D /* ListView */,
 				4526ECF226EDC0EC0030098D /* LiveTextField */,
@@ -259,6 +264,7 @@
 		4526ECF726EDC7BC0030098D /* ListView */ = {
 			isa = PBXGroup;
 			children = (
+				4526ED0326EDD7BA0030098D /* ListItem */,
 				4526ECF826EDC7DC0030098D /* ListViewModel.swift */,
 				4526ECFA26EDC89E0030098D /* ListView.swift */,
 			);
@@ -281,6 +287,14 @@
 				4526ED0426EDD7C90030098D /* ListItem.swift */,
 			);
 			path = ListItem;
+			sourceTree = "<group>";
+		};
+		452BAB2B26EEC8C800971BA7 /* BookmarkView */ = {
+			isa = PBXGroup;
+			children = (
+				452BAB2C26EEC91700971BA7 /* BookmarkView.swift */,
+			);
+			path = BookmarkView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -417,9 +431,11 @@
 				4526ECEE26EDC0950030098D /* SearchViewModel.swift in Sources */,
 				4506ADE526EE849300FF1F6C /* URLImage.swift in Sources */,
 				4506ADE726EE854F00FF1F6C /* URLImageViewModel.swift in Sources */,
+				452BAB2F26EECD3A00971BA7 /* BookmarkService.swift in Sources */,
 				4526ECB226EDA4380030098D /* Persistence.swift in Sources */,
 				4506ADE926EE88A500FF1F6C /* URLImageManager.swift in Sources */,
 				4526ECB526EDA4380030098D /* RecipeGrimoire.xcdatamodeld in Sources */,
+				452BAB2D26EEC91700971BA7 /* BookmarkView.swift in Sources */,
 				4526ECE426EDBA350030098D /* AppViewModel.swift in Sources */,
 				4526ECF026EDC0A70030098D /* SearchView.swift in Sources */,
 				4526ECF926EDC7DC0030098D /* ListViewModel.swift in Sources */,

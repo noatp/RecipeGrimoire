@@ -8,13 +8,14 @@
 import Foundation
 import Combine
 
-class RecipeService: ObservableObject{
+class RecipeService{
     private let jsonDecoder = JSONDecoder()
     
     @Published var fetchRecipesState: FetchRecipesState
     private var nextPageUrl = ""
     private var currentQuery = ""
     private var urlString = ""
+    private var recipeList: [Recipe] = []
     private var fetchRecipesSubscription: AnyCancellable?
 
     init(initFetchRecipesState: FetchRecipesState = .empty) {
@@ -30,8 +31,8 @@ class RecipeService: ObservableObject{
             fetchRecipesSubscription?.cancel()
             nextPageUrl = ""
             currentQuery = query
-            fetchRecipesState.isLoading = true
-            fetchRecipesState.recipeList = []
+            fetchRecipesState = .empty
+            recipeList = []
             urlString = "https://food2fork.ca/api/recipe/search/?page=1&query=\(query)"
             print("requesting \(urlString)")
         }
@@ -60,19 +61,25 @@ class RecipeService: ObservableObject{
             })
             .receive(on: DispatchQueue.main)
             .decode(type: Response.self, decoder: jsonDecoder)
-            .sink(receiveCompletion: { completionResult in
-                switch completionResult{
-                case .finished:
-                    break
-                case .failure(let error):
-                    print("RecipeService.searchForRecipes: \(error.localizedDescription)")
+            .sink(
+                receiveCompletion: { completionResult in
+                    switch completionResult{
+                    case .finished:
+                        break
+                    case .failure(let error):
+                        print("RecipeService.searchForRecipes: \(error.localizedDescription)")
+                    }
+                },
+                receiveValue: { [weak self] returnedResponse in
+                    self?.nextPageUrl = returnedResponse.next ?? ""
+                    self?.recipeList.append(contentsOf: returnedResponse.results)
+                    self?.fetchRecipesState = FetchRecipesState(
+                        isLoading: false,
+                        moreRecipeAvailable: Bool(self?.nextPageUrl == "") ? false : true,
+                        recipeList: self?.recipeList ?? []
+                    )
                 }
-            }, receiveValue: { [weak self] returnedResponse in
-                self?.nextPageUrl = returnedResponse.next ?? ""
-                self?.fetchRecipesState.isLoading = false
-                self?.fetchRecipesState.moreRecipeAvailable = (self?.nextPageUrl == "") ? false : true
-                self?.fetchRecipesState.recipeList.append(contentsOf: returnedResponse.results)
-            })
+            )
     }
     
     struct FetchRecipesState{
