@@ -33,7 +33,8 @@
 		4526ECFB26EDC89E0030098D /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4526ECFA26EDC89E0030098D /* ListView.swift */; };
 		4526ED0526EDD7C90030098D /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4526ED0426EDD7C90030098D /* ListItem.swift */; };
 		452BAB2D26EEC91700971BA7 /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452BAB2C26EEC91700971BA7 /* BookmarkView.swift */; };
-		452BAB2F26EECD3A00971BA7 /* BookmarkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452BAB2E26EECD3A00971BA7 /* BookmarkService.swift */; };
+		452BAB2F26EECD3A00971BA7 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452BAB2E26EECD3A00971BA7 /* Database.swift */; };
+		452BAB3126EEF7FA00971BA7 /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452BAB3026EEF7FA00971BA7 /* BookmarkViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,7 +87,8 @@
 		4526ECFA26EDC89E0030098D /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		4526ED0426EDD7C90030098D /* ListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
 		452BAB2C26EEC91700971BA7 /* BookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
-		452BAB2E26EECD3A00971BA7 /* BookmarkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkService.swift; sourceTree = "<group>"; };
+		452BAB2E26EECD3A00971BA7 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		452BAB3026EEF7FA00971BA7 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 		4526ECA726EDA4360030098D /* RecipeGrimoire */ = {
 			isa = PBXGroup;
 			children = (
+				452BAB3226EEFDA700971BA7 /* Repository */,
 				4526ECDB26EDAC6A0030098D /* Dependency */,
 				4526ECDA26EDAC620030098D /* Data */,
 				4526ECD926EDAC5E0030098D /* Model */,
@@ -210,7 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				4526ECE026EDADEC0030098D /* RecipeService.swift */,
-				452BAB2E26EECD3A00971BA7 /* BookmarkService.swift */,
+				452BAB2E26EECD3A00971BA7 /* Database.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -293,8 +296,16 @@
 			isa = PBXGroup;
 			children = (
 				452BAB2C26EEC91700971BA7 /* BookmarkView.swift */,
+				452BAB3026EEF7FA00971BA7 /* BookmarkViewModel.swift */,
 			);
 			path = BookmarkView;
+			sourceTree = "<group>";
+		};
+		452BAB3226EEFDA700971BA7 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -431,13 +442,14 @@
 				4526ECEE26EDC0950030098D /* SearchViewModel.swift in Sources */,
 				4506ADE526EE849300FF1F6C /* URLImage.swift in Sources */,
 				4506ADE726EE854F00FF1F6C /* URLImageViewModel.swift in Sources */,
-				452BAB2F26EECD3A00971BA7 /* BookmarkService.swift in Sources */,
+				452BAB2F26EECD3A00971BA7 /* Database.swift in Sources */,
 				4526ECB226EDA4380030098D /* Persistence.swift in Sources */,
 				4506ADE926EE88A500FF1F6C /* URLImageManager.swift in Sources */,
 				4526ECB526EDA4380030098D /* RecipeGrimoire.xcdatamodeld in Sources */,
 				452BAB2D26EEC91700971BA7 /* BookmarkView.swift in Sources */,
 				4526ECE426EDBA350030098D /* AppViewModel.swift in Sources */,
 				4526ECF026EDC0A70030098D /* SearchView.swift in Sources */,
+				452BAB3126EEF7FA00971BA7 /* BookmarkViewModel.swift in Sources */,
 				4526ECF926EDC7DC0030098D /* ListViewModel.swift in Sources */,
 				4526ECF426EDC0F90030098D /* LiveTextField.swift in Sources */,
 				4526ECE626EDBA4E0030098D /* Dependency.swift in Sources */,

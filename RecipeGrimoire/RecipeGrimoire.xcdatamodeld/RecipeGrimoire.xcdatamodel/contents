@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Bookmark" representedClassName="Bookmark" syncable="YES" codeGenerationType="class">
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    <entity name="RecipeEntity" representedClassName="RecipeEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="featuredImage" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="ingredients" attributeType="Transformable" customClassName="[String]"/>
+        <attribute name="publisher" attributeType="String"/>
+        <attribute name="sourceURL" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Bookmark" positionX="-63" positionY="-18" width="128" height="44"/>
+        <element name="RecipeEntity" positionX="-63" positionY="-18" width="128" height="119"/>
     </elements>
 </model>

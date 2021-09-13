@@ -9,14 +9,19 @@ import Foundation
 import UIKit
 
 class Dependency{
+    
     static let shared = Dependency()
-    static let preview = Dependency(recipeService: MockRecipeService())
+    static let preview = Dependency(recipeService: MockRecipeService(), database: MockDatabase())
+    
     var recipeService: RecipeService
+    var database: Database
     
     init(
-        recipeService: RecipeService = RecipeService()
+        recipeService: RecipeService = RecipeService(),
+        database: Database = Database()
     ){
         self.recipeService = recipeService
+        self.database = database
     }
         
 }
@@ -33,6 +38,12 @@ class MockRecipeService: RecipeService{
                 recipeList: Recipe.previewList
             )
         )
+    }
+}
+
+class MockDatabase: Database{
+    override func getAllBookmarkedRecipe() -> [Recipe] {
+        Recipe.previewList
     }
 }
 

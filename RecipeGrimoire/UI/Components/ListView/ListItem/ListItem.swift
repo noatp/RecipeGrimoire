@@ -16,7 +16,7 @@ struct ListItem: View {
                 .scaledToFill()
                 .frame(width: 50, height: 50)
                 .clipped()
-            Text(recipe.title ?? "Placeholder")
+            Text(recipe.title)
                 .font(.headline)
                 .bold()
                 .padding(.leading)

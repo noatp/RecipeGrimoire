@@ -21,15 +21,15 @@ struct DetailView: View {
                     .clipped()
                     .cornerRadius(10)
                 VStack(alignment: .leading){
-                    Text(recipe.title ?? "Placeholder")
+                    Text(recipe.title)
                         .font(.title)
                         .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                    Text("by " + (recipe.publisher ?? "Noat"))
+                    Text("by " + (recipe.publisher ))
                         .font(.caption)
                     Divider()
                     Text("Ingredient")
                         .font(.title2)
-                    ForEach(recipe.ingredients ?? [], id: \.self) { ingredient in
+                    ForEach(recipe.ingredients , id: \.self) { ingredient in
                         Text("- " + ingredient)
                             .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                     }
