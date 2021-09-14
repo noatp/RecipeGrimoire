@@ -19,6 +19,7 @@ class BookmarkViewModel: ObservableObject{
     
     func getAllBookmarkedRecipe(){
         bookmarkedRecipeList = database.getAllBookmarkedRecipe()
+        print("FUCK YOU TOO \(bookmarkedRecipeList)")
     }
 }
 

@@ -12,6 +12,7 @@ struct BookmarkView: View {
     
     init(dependency: Dependency = Dependency.preview) {
         self.bookmarkViewModel = dependency.bookmarkViewModel
+        bookmarkViewModel.getAllBookmarkedRecipe()
     }
     
     var body: some View {

@@ -34,7 +34,7 @@ class RecipeService{
             fetchRecipesState = .empty
             recipeList = []
             urlString = "https://food2fork.ca/api/recipe/search/?page=1&query=\(query)"
-            print("requesting \(urlString)")
+//            print("requesting \(urlString)")
         }
         else{
             urlString = nextPageUrl

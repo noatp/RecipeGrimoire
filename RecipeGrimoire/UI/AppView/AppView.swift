@@ -20,7 +20,7 @@ struct AppView: View {
             SearchView(dependency: Dependency.shared)
                 .tabItem { Label("Search", systemImage: "magnifyingglass") }
                 .tag(Tab.search)
-            BookmarkView()
+            BookmarkView(dependency: Dependency.shared)
                 .tabItem { Label("Bookmark", systemImage: "bookmark") }
                 .tag(Tab.bookmark)
         }

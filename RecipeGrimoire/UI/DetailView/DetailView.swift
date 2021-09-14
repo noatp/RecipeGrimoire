@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct DetailView: View {
-    let recipe: Recipe
+    @ObservedObject var detailViewModel: DetailViewModel
+    private let recipe: Recipe
+    
+    init(dependency: Dependency = Dependency.preview, recipe: Recipe) {
+        self.detailViewModel = dependency.detailViewModel
+        self.recipe = recipe
+    }
     
     var body: some View {
         GeometryReader{ geometry in
@@ -21,9 +27,22 @@ struct DetailView: View {
                     .clipped()
                     .cornerRadius(10)
                 VStack(alignment: .leading){
-                    Text(recipe.title)
-                        .font(.title)
-                        .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                    HStack{
+                        Text(recipe.title)
+                            .font(.title)
+                            .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                        Spacer()
+                        Button(action: {detailViewModel.bookmarkRecipe(recipe: recipe)}){
+                            Image(systemName: detailViewModel.isBookmarked ? "bookmark.fill" : "bookmark")
+                                .foregroundColor(detailViewModel.isBookmarked ? .yellow : .gray)
+                                .font(.title)
+                            
+                        }
+                        .onAppear{
+                            detailViewModel.isRecipeBookmarked(recipe: recipe)
+                        }
+                    }
+                    
                     Text("by " + (recipe.publisher ))
                         .font(.caption)
                     Divider()

@@ -35,6 +35,7 @@
 		452BAB2D26EEC91700971BA7 /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452BAB2C26EEC91700971BA7 /* BookmarkView.swift */; };
 		452BAB2F26EECD3A00971BA7 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452BAB2E26EECD3A00971BA7 /* Database.swift */; };
 		452BAB3126EEF7FA00971BA7 /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452BAB3026EEF7FA00971BA7 /* BookmarkViewModel.swift */; };
+		45862BFD26EF14360066C459 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45862BFC26EF14360066C459 /* DetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		452BAB2C26EEC91700971BA7 /* BookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
 		452BAB2E26EECD3A00971BA7 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		452BAB3026EEF7FA00971BA7 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
+		45862BFC26EF14360066C459 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				4506ADE226EE817600FF1F6C /* DetailView.swift */,
+				45862BFC26EF14360066C459 /* DetailViewModel.swift */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 		4526ECD826EDAC580030098D /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				4506ADE126EE814400FF1F6C /* DetailView */,
 				452BAB2B26EEC8C800971BA7 /* BookmarkView */,
 				4526ECF126EDC0E40030098D /* Components */,
 				4526ECE926EDBFF00030098D /* SearchView */,
@@ -247,7 +251,6 @@
 		4526ECF126EDC0E40030098D /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				4506ADE126EE814400FF1F6C /* DetailView */,
 				4526ECFC26EDCE0A0030098D /* URLImage */,
 				4526ECF726EDC7BC0030098D /* ListView */,
 				4526ECF226EDC0EC0030098D /* LiveTextField */,
@@ -450,6 +453,7 @@
 				4526ECE426EDBA350030098D /* AppViewModel.swift in Sources */,
 				4526ECF026EDC0A70030098D /* SearchView.swift in Sources */,
 				452BAB3126EEF7FA00971BA7 /* BookmarkViewModel.swift in Sources */,
+				45862BFD26EF14360066C459 /* DetailViewModel.swift in Sources */,
 				4526ECF926EDC7DC0030098D /* ListViewModel.swift in Sources */,
 				4526ECF426EDC0F90030098D /* LiveTextField.swift in Sources */,
 				4526ECE626EDBA4E0030098D /* Dependency.swift in Sources */,

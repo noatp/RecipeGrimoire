@@ -3,7 +3,7 @@
     <entity name="RecipeEntity" representedClassName="RecipeEntity" syncable="YES" codeGenerationType="class">
         <attribute name="featuredImage" attributeType="String"/>
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="ingredients" attributeType="Transformable" customClassName="[String]"/>
+        <attribute name="ingredients" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
         <attribute name="publisher" attributeType="String"/>
         <attribute name="sourceURL" attributeType="String"/>
         <attribute name="title" attributeType="String"/>
