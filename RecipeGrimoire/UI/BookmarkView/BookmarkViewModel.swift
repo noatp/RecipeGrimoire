@@ -6,20 +6,31 @@
 //
 
 import Foundation
+import Combine
 
 class BookmarkViewModel: ObservableObject{
-    @Published var bookmarkedRecipeList: [Recipe] = []
+    @Published var bookmarkedRecipeList: [RecipeDTO] = []
     
     //dependencies
     private let database: Database
     
+    private var bookmarkedRecipeListSubscription: AnyCancellable?
+
     init(database: Database) {
         self.database = database
+        addSubscription()
     }
     
     func getAllBookmarkedRecipe(){
-        bookmarkedRecipeList = database.getAllBookmarkedRecipe()
+        database.getAllBookmarkedRecipe()
         print("FUCK YOU TOO \(bookmarkedRecipeList)")
+    }
+    
+    func addSubscription(){
+        bookmarkedRecipeListSubscription = database.$bookmarkedRecipeList
+            .sink { [weak self] databaseRecipeList in
+                self?.bookmarkedRecipeList = databaseRecipeList
+            }
     }
 }
 

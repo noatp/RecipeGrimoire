@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ListItem: View {
-    var recipe: Recipe
+    var recipe: RecipeDTO
     
     var body: some View {
         HStack{
@@ -28,7 +28,7 @@ struct ListItem: View {
 
 struct ListItem_Previews: PreviewProvider {
     static var previews: some View {
-        ListItem(recipe: Recipe.preview)
+        ListItem(recipe: RecipeDTO.preview)
             .previewLayout(.sizeThatFits)
     }
 }

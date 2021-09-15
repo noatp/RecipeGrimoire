@@ -9,9 +9,9 @@ import SwiftUI
 
 struct DetailView: View {
     @ObservedObject var detailViewModel: DetailViewModel
-    private let recipe: Recipe
+    private let recipe: RecipeDTO
     
-    init(dependency: Dependency = Dependency.preview, recipe: Recipe) {
+    init(dependency: Dependency = Dependency.preview, recipe: RecipeDTO) {
         self.detailViewModel = dependency.detailViewModel
         self.recipe = recipe
     }
@@ -63,6 +63,6 @@ struct DetailView: View {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(recipe: Recipe.preview)
+        DetailView(recipe: RecipeDTO.preview)
     }
 }

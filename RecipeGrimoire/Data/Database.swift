@@ -23,9 +23,16 @@ class Database{
         Self.persistentContainer.viewContext
     }
 
+    //Publisher
+    @Published var bookmarkedRecipeList: [RecipeDTO] = []
     
-    func bookmarkRecipe(recipe: Recipe){
-        let _ = recipeToRecipeEntityMapper(recipe: recipe)
+    init(initBookmarkedRecipeList: [RecipeDTO] = []) {
+        self.bookmarkedRecipeList = initBookmarkedRecipeList
+    }
+    
+    //CRUD
+    func bookmarkRecipe(recipe: RecipeDTO){
+        let _ = recipe.toRecipeEntity()
         do{
             try viewContext.save()
         } catch{
@@ -34,51 +41,48 @@ class Database{
         }
     }
     
-    func getAllBookmarkedRecipe() -> [Recipe]{
+    func getAllBookmarkedRecipe(){
         let request: NSFetchRequest<RecipeEntity> = RecipeEntity.fetchRequest()
         do{
-            let allBookmarkedRecipe = try recipeEntityListToRecipeListMapper(recipeEntityList: viewContext.fetch(request))
-            print("HERE \(allBookmarkedRecipe)")
-            return allBookmarkedRecipe
+            let recipeEntities = try viewContext.fetch(request)
+            bookmarkedRecipeList = recipeEntities.toRecipeDTOList()
         } catch {
-            print("FUCK")
             print(error)
-            return []
         }
     }
     
-    func isRecipeBookmarked(recipe: Recipe) -> Bool{
-        let request: NSFetchRequest<RecipeEntity> = RecipeEntity.fetchRequest()
-        request.predicate = NSPredicate(format: "title == %@", recipe.title)
-        let requestResult = (try? viewContext.fetch(request)) ?? []
-        return requestResult.count > 0
-    }
-    
-    func recipeEntityToRecipeMapper(recipeEntity: RecipeEntity) -> Recipe{
-        return Recipe(
-            id: Int(recipeEntity.id),
-            title: recipeEntity.title!,
-            publisher: recipeEntity.publisher!,
-            featuredImage: recipeEntity.featuredImage!,
-            sourceURL: recipeEntity.sourceURL!,
-            ingredients: recipeEntity.ingredients!
-        )
-    }
-    
-    func recipeEntityListToRecipeListMapper(recipeEntityList: [RecipeEntity]) -> [Recipe]{
-        recipeEntityList.map { recipeEntity in
-            recipeEntityToRecipeMapper(recipeEntity: recipeEntity)
+    func isRecipeBookmarked(recipe: RecipeDTO) -> Bool{
+//        let request: NSFetchRequest<RecipeEntity> = RecipeEntity.fetchRequest()
+//        request.predicate = NSPredicate(format: "title == %@", recipe.title)
+//        let requestResult = (try? viewContext.fetch(request)) ?? []
+//        return requestResult.count > 0
+        getAllBookmarkedRecipe()
+        let bookmark = bookmarkedRecipeList.first { bookmarkedRecipe in
+            bookmarkedRecipe.id == recipe.id
+        }
+        
+        if let _ = bookmark{
+            return true
+        }
+        else{
+            return false
         }
     }
     
-    func recipeToRecipeEntityMapper(recipe: Recipe) -> RecipeEntity{
-        let newRecipeEntity = RecipeEntity(context: viewContext)
-        newRecipeEntity.id = Int64(recipe.id)
-        newRecipeEntity.title = recipe.title
-        newRecipeEntity.publisher = recipe.publisher
-        newRecipeEntity.featuredImage = recipe.featuredImage
-        newRecipeEntity.sourceURL = recipe.sourceURL
-        newRecipeEntity.ingredients = recipe.ingredients
-        return newRecipeEntity
+    func removeBookmark(recipe: RecipeDTO){
+        var existingBookmark: NSManagedObject
+        do{
+            existingBookmark = try viewContext.existingObject(with: recipe.bookmarkId!)
+        } catch {
+            print("Database.removeBookmark: cannot find existing bookmark")
+            return
+        }
+        viewContext.delete(existingBookmark)
+        do{
+            try viewContext.save()
+        } catch{
+            viewContext.rollback()
+            print(error.localizedDescription)
+        }
     }
 }

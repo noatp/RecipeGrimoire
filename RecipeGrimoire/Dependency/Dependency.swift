@@ -35,15 +35,19 @@ class MockRecipeService: RecipeService{
             initFetchRecipesState: FetchRecipesState(
                 isLoading: isLoading,
                 moreRecipeAvailable: moreRecipeAvailable,
-                recipeList: Recipe.previewList
+                recipeList: RecipeDTO.previewList
             )
         )
     }
 }
 
 class MockDatabase: Database{
-    override func getAllBookmarkedRecipe() -> [Recipe] {
-        Recipe.previewList
+    init(
+        recipes: [RecipeDTO] = RecipeDTO.previewList
+    ){
+        super.init(
+            initBookmarkedRecipeList: recipes
+        )
     }
 }
 

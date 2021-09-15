@@ -21,9 +21,11 @@ class ListViewModel: ObservableObject{
     func addSubscription(){
         recipeListSubscription = recipeService.$fetchRecipesState
             .sink(receiveValue: { [weak self] fetchRecipesState in
-                self?.listViewState.isLoading = fetchRecipesState.isLoading
-                self?.listViewState.moreRecipeAvailable = fetchRecipesState.moreRecipeAvailable
-                self?.listViewState.recipeList = fetchRecipesState.recipeList
+                self?.listViewState = ListViewState(
+                    isLoading: fetchRecipesState.isLoading,
+                    moreRecipeAvailable: fetchRecipesState.moreRecipeAvailable,
+                    recipeList: fetchRecipesState.recipeList
+                )
             })
     }
     
@@ -34,7 +36,7 @@ class ListViewModel: ObservableObject{
     struct ListViewState{
         var isLoading: Bool
         var moreRecipeAvailable: Bool
-        var recipeList: [Recipe]
+        var recipeList: [RecipeDTO]
         
         static let empty = ListViewState(isLoading: true, moreRecipeAvailable: false, recipeList: [])
     }

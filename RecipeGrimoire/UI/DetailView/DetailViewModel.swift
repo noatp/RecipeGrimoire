@@ -19,12 +19,12 @@ class DetailViewModel: ObservableObject{
         self.database = database
     }
     
-    func bookmarkRecipe(recipe: Recipe){
+    func bookmarkRecipe(recipe: RecipeDTO){
         database.bookmarkRecipe(recipe: recipe)
         isRecipeBookmarked(recipe: recipe)
     }
     
-    func isRecipeBookmarked(recipe: Recipe){
+    func isRecipeBookmarked(recipe: RecipeDTO){
         isBookmarked = database.isRecipeBookmarked(recipe: recipe)
     }
     

@@ -76,53 +76,16 @@ class RecipeService{
                     self?.fetchRecipesState = FetchRecipesState(
                         isLoading: false,
                         moreRecipeAvailable: Bool(self?.nextPageUrl == "") ? false : true,
-                        recipeList: self?.recipeList ?? []
+                        recipeList: self?.recipeList.toRecipeDTOList() ?? []
                     )
                 }
             )
     }
     
-//    func getRecipeById(_ recipeId: Int){
-//        guard let url = URL(string: "https://food2fork.ca/api/recipe/get/?id=\(recipeId)")
-//        else{
-//            print("RecipeService.getRecipeById: bad url")
-//            return
-//        }
-//        
-//        var urlRequest = URLRequest(url: url)
-//        urlRequest.allHTTPHeaderFields = ["Authorization": "Token 9c8b06d329136da358c2d00e76946b0111ce2c48"]
-//        
-//        fetchRecipesSubscription = URLSession.shared.dataTaskPublisher(for: urlRequest)
-//            .subscribe(on: DispatchQueue.global(qos: .default))
-//            .tryMap({ publisherOutput in
-//                guard let outputResponse = publisherOutput.response as? HTTPURLResponse,
-//                      (200...299).contains(outputResponse.statusCode)
-//                else{
-//                    throw URLError(.badServerResponse)
-//                }
-//                return publisherOutput.data
-//            })
-//            .receive(on: DispatchQueue.main)
-//            .decode(type: Recipe.self, decoder: jsonDecoder)
-//            .sink(
-//                receiveCompletion: { completionResult in
-//                    switch completionResult{
-//                    case .finished:
-//                        break
-//                    case .failure(let error):
-//                        print("RecipeService.getRecipeById: \(error.localizedDescription)")
-//                    }
-//                },
-//                receiveValue: { [weak self] returnedRecipe in
-////                    self?.bookmarkRecipeList.append(returnedRecipe)
-//                }
-//            )
-//    }
-    
     struct FetchRecipesState{
         var isLoading: Bool
         var moreRecipeAvailable: Bool
-        var recipeList: [Recipe]
+        var recipeList: [RecipeDTO]
         
         static let empty = FetchRecipesState(isLoading: true, moreRecipeAvailable: false, recipeList: [])
     }

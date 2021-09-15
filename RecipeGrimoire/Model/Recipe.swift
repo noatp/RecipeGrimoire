@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import CoreData
+
 
 // MARK: - Recipe
 struct Recipe: Codable, Identifiable {
     var id: Int
     var title, publisher, featuredImage, sourceURL: String
     var ingredients: [String]
-
     
     enum CodingKeys: String, CodingKey {
         case id = "pk"
