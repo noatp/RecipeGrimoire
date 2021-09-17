@@ -16,14 +16,24 @@ struct BookmarkView: View {
     }
     
     var body: some View {
-        List{
-            ForEach(bookmarkViewModel.bookmarkedRecipeList) { bookmarkedRecipe in
-                ListItem(recipe: bookmarkedRecipe)
+        NavigationView{
+            List{
+                ForEach(bookmarkViewModel.bookmarkedRecipeList) { bookmarkedRecipe in
+                    NavigationLink(
+                        destination: DetailView(recipe: bookmarkedRecipe),
+                        label: {
+                            ListItem(recipe: bookmarkedRecipe)
+                        }
+                    )
+                    .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+                }
+            }
+            .navigationTitle("Bookmark")
+            .onAppear{
+                bookmarkViewModel.getAllBookmarkedRecipe()
             }
         }
-        .onAppear{
-            bookmarkViewModel.getAllBookmarkedRecipe()
-        }
+        
     }
 }
 
