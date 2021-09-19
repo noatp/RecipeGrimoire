@@ -12,28 +12,23 @@ struct BookmarkView: View {
     
     init(dependency: Dependency = Dependency.preview) {
         self.bookmarkViewModel = dependency.bookmarkViewModel
-        bookmarkViewModel.getAllBookmarkedRecipe()
     }
     
     var body: some View {
-        NavigationView{
-            List{
-                ForEach(bookmarkViewModel.bookmarkedRecipeList) { bookmarkedRecipe in
-                    NavigationLink(
-                        destination: DetailView(recipe: bookmarkedRecipe),
-                        label: {
-                            ListItem(recipe: bookmarkedRecipe)
-                        }
-                    )
-                    .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
-                }
-            }
-            .navigationTitle("Bookmark")
-            .onAppear{
-                bookmarkViewModel.getAllBookmarkedRecipe()
+        List{
+            ForEach(bookmarkViewModel.bookmarkedRecipeList) { bookmarkedRecipe in
+                NavigationLink(
+                    destination: DetailView(dependency: .shared, recipe: bookmarkedRecipe),
+                    label: {
+                        ListItem(recipe: bookmarkedRecipe)
+                    }
+                )
+                .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
             }
         }
-        
+        .onAppear{
+            bookmarkViewModel.getAllBookmarkedRecipe()
+        }
     }
 }
 

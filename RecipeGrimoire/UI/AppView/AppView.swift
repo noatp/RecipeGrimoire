@@ -16,13 +16,15 @@ struct AppView: View {
     }
     
     var body: some View {
-        TabView(selection: $appViewModel.selectedTab){
-            SearchView(dependency: Dependency.shared)
-                .tabItem { Label("Search", systemImage: "magnifyingglass") }
-                .tag(Tab.search)
-            BookmarkView(dependency: Dependency.shared)
-                .tabItem { Label("Bookmark", systemImage: "bookmark") }
-                .tag(Tab.bookmark)
+        NavigationView{
+            TabView{
+                SearchView(dependency: Dependency.shared)
+                    .tabItem { Label("Search", systemImage: "magnifyingglass") }
+                    .tag(Tab.search)
+                BookmarkView(dependency: Dependency.shared)
+                    .tabItem { Label("Bookmark", systemImage: "bookmark") }
+                    .tag(Tab.bookmark)
+            }
         }
     }
 }

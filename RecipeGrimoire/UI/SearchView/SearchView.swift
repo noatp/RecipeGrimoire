@@ -15,17 +15,14 @@ struct SearchView: View {
     }
     
     var body: some View {
-        NavigationView{
-            VStack{
-                HStack{
-                    Image(systemName: "magnifyingglass")
-                    LiveTextField(dependency: Dependency.shared)
-                }
-                ListView(dependency: Dependency.shared)
+        VStack{
+            HStack{
+                Image(systemName: "magnifyingglass")
+                LiveTextField(dependency: Dependency.shared)
             }
-            .padding(.horizontal)
-            .navigationTitle("Search")
+            ListView(dependency: Dependency.shared)
         }
+        .padding(.horizontal)
     }
 }
 

@@ -14,6 +14,7 @@ struct DetailView: View {
     init(dependency: Dependency = Dependency.preview, recipe: RecipeDTO) {
         self.detailViewModel = dependency.detailViewModel
         self.recipe = recipe
+//        detailViewModel.isRecipeBookmarked(recipe: recipe)
     }
     
     var body: some View {
@@ -32,15 +33,7 @@ struct DetailView: View {
                             .font(.title)
                             .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                         Spacer()
-                        Button(action: {detailViewModel.bookmarkRecipe(recipe: recipe)}){
-                            Image(systemName: detailViewModel.isBookmarked ? "bookmark.fill" : "bookmark")
-                                .foregroundColor(detailViewModel.isBookmarked ? .yellow : .gray)
-                                .font(.title)
-                            
-                        }
-                        .onAppear{
-                            detailViewModel.isRecipeBookmarked(recipe: recipe)
-                        }
+                        bookmarkButton
                     }
                     
                     Text("by " + (recipe.publisher ))
@@ -58,6 +51,20 @@ struct DetailView: View {
         }
         .navigationTitle("Recipe Detail")
         .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    var bookmarkButton: some View{
+        Button(action: {detailViewModel.toggleBookmark(recipe: recipe)}){
+            Image(systemName: detailViewModel.isBookmarked ? "bookmark.fill" : "bookmark")
+                .foregroundColor(detailViewModel.isBookmarked ? .yellow : .gray)
+                .font(.title)
+                .onAppear{
+                    print(detailViewModel.isBookmarked)
+                }
+        }
+        .onAppear{
+            detailViewModel.checkIfRecipeIsBookmarked(recipe: recipe)
+        }
     }
 }
 

@@ -22,67 +22,65 @@ class Database{
     var viewContext: NSManagedObjectContext{
         Self.persistentContainer.viewContext
     }
-
-    //Publisher
-    @Published var bookmarkedRecipeList: [RecipeDTO] = []
-    
-    init(initBookmarkedRecipeList: [RecipeDTO] = []) {
-        self.bookmarkedRecipeList = initBookmarkedRecipeList
-    }
     
     //CRUD
+    //create
     func bookmarkRecipe(recipe: RecipeDTO){
         let _ = recipe.toRecipeEntity()
-        do{
-            try viewContext.save()
-        } catch{
-            viewContext.rollback()
-            print(error.localizedDescription)
-        }
+        saveViewContext()
+//        getAllBookmarkedRecipe()
     }
     
-    func getAllBookmarkedRecipe(){
+    //read multiple
+    func getAllBookmarkedRecipe() -> [RecipeDTO]{
         let request: NSFetchRequest<RecipeEntity> = RecipeEntity.fetchRequest()
         do{
             let recipeEntities = try viewContext.fetch(request)
-            bookmarkedRecipeList = recipeEntities.toRecipeDTOList()
+            return recipeEntities.toRecipeDTOList()
         } catch {
             print(error)
         }
+        return []
     }
     
-    func isRecipeBookmarked(recipe: RecipeDTO) -> Bool{
-//        let request: NSFetchRequest<RecipeEntity> = RecipeEntity.fetchRequest()
-//        request.predicate = NSPredicate(format: "title == %@", recipe.title)
-//        let requestResult = (try? viewContext.fetch(request)) ?? []
-//        return requestResult.count > 0
-        getAllBookmarkedRecipe()
-        let bookmark = bookmarkedRecipeList.first { bookmarkedRecipe in
-            bookmarkedRecipe.id == recipe.id
-        }
-        
-        if let _ = bookmark{
-            return true
-        }
-        else{
-            return false
-        }
-    }
-    
-    func removeBookmark(recipe: RecipeDTO){
-        var existingBookmark: NSManagedObject
+    //read single
+    func checkIfRecipeIsBookmarked(recipe: RecipeDTO) -> Bool{
+        let request: NSFetchRequest<RecipeEntity> = RecipeEntity.fetchRequest()
+        request.predicate = NSPredicate(format: "title == %@", recipe.title)
         do{
-            existingBookmark = try viewContext.existingObject(with: recipe.bookmarkId!)
-        } catch {
-            print("Database.removeBookmark: cannot find existing bookmark")
-            return
+            let recipeEntities = try viewContext.fetch(request)
+            if (!recipeEntities.isEmpty){
+                return true
+            }
+        } catch{
+            print(error)
         }
-        viewContext.delete(existingBookmark)
+        return false
+    }
+        
+    //delete
+    func removeBookmark(recipe: RecipeDTO){
+        let request: NSFetchRequest<RecipeEntity> = RecipeEntity.fetchRequest()
+        request.predicate = NSPredicate(format: "title == %@", recipe.title)
+        do{
+            let recipeEntities = try viewContext.fetch(request)
+            recipeEntities.forEach { recipeEntity in
+                viewContext.delete(recipeEntity)
+            }
+        } catch{
+            print(error)
+        }
+        saveViewContext()
+//        getAllBookmarkedRecipe()
+    }
+    
+    func saveViewContext(){
         do{
             try viewContext.save()
         } catch{
             viewContext.rollback()
-            print(error.localizedDescription)
+            print("\(#function): \(error.localizedDescription)")
         }
     }
+    
 }

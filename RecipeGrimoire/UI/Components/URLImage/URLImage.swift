@@ -20,9 +20,11 @@ struct URLImage: View {
     }
     
     var body: some View {
-        image
-            .onAppear(perform: urlImageViewModel.load)
-            .onDisappear(perform: urlImageViewModel.cancel)
+        VStack{
+            image
+        }
+        .onAppear(perform: urlImageViewModel.load)
+        .onDisappear(perform: urlImageViewModel.cancel)
     }
     
     private var image: some View {

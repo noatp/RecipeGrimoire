@@ -42,13 +42,7 @@ class MockRecipeService: RecipeService{
 }
 
 class MockDatabase: Database{
-    init(
-        recipes: [RecipeDTO] = RecipeDTO.previewList
-    ){
-        super.init(
-            initBookmarkedRecipeList: recipes
-        )
-    }
+    
 }
 
 

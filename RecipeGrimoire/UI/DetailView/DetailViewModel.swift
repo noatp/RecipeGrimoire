@@ -8,24 +8,33 @@
 import Foundation
 
 class DetailViewModel: ObservableObject{
-    @Published var isBookmarked: Bool = false
+    @Published var isBookmarked: Bool
     
     //dependencies
     private let database: Database
 
-    var recipe: Recipe = Recipe.preview
-
     init(database: Database) {
         self.database = database
+        self.isBookmarked = false
     }
     
     func bookmarkRecipe(recipe: RecipeDTO){
         database.bookmarkRecipe(recipe: recipe)
-        isRecipeBookmarked(recipe: recipe)
+        checkIfRecipeIsBookmarked(recipe: recipe)
     }
     
-    func isRecipeBookmarked(recipe: RecipeDTO){
-        isBookmarked = database.isRecipeBookmarked(recipe: recipe)
+    func toggleBookmark(recipe: RecipeDTO){
+        if !isBookmarked{
+            database.bookmarkRecipe(recipe: recipe)
+        }
+        else{
+            database.removeBookmark(recipe: recipe)
+        }
+        checkIfRecipeIsBookmarked(recipe: recipe)
+    }
+    
+    func checkIfRecipeIsBookmarked(recipe: RecipeDTO){
+        isBookmarked = database.checkIfRecipeIsBookmarked(recipe: recipe)
     }
     
 }

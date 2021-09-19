@@ -18,16 +18,14 @@ struct ListView: View {
         List{
             if (listViewModel.listViewState.recipeList.isEmpty && !listViewModel.listViewState.isLoading){
                 noResultText
-                    .transition(.slide)
             }
             else if (listViewModel.listViewState.isLoading){
                 loadIndicator
-                    .transition(.scale)
             }
             else{
                 ForEach(listViewModel.listViewState.recipeList){ recipe in
                     NavigationLink(
-                        destination: DetailView(recipe: recipe),
+                        destination: DetailView(dependency: .shared, recipe: recipe),
                         label: {
                             ListItem(recipe: recipe)
                         }
@@ -36,7 +34,6 @@ struct ListView: View {
                 }
                 if(listViewModel.listViewState.moreRecipeAvailable){
                     loadIndicator
-                        .transition(.scale)
                         .onAppear{
                             listViewModel.fetchNextPage()
                         }
