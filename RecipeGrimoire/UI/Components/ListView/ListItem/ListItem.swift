@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ListItem: View {
     @ObservedObject private var urlImageViewModel: URLImageViewModel
+    @State private var image: UIImage?
     private var recipe: RecipeDTO
     
     init(recipe: RecipeDTO){
@@ -18,7 +19,7 @@ struct ListItem: View {
     
     var body: some View {
         Group{
-            if urlImageViewModel.image != nil{
+            if image != nil{
                 itemContent
             }
             else {
@@ -27,11 +28,16 @@ struct ListItem: View {
         }
         .onAppear(perform: urlImageViewModel.load)
         .onDisappear(perform: urlImageViewModel.cancel)
+        .onReceive(urlImageViewModel.$image) { newImage in
+            withAnimation {
+                self.image = newImage
+            }
+        }
     }
     
     var itemContent: some View{
         HStack{
-            Image(uiImage: urlImageViewModel.image!)
+            Image(uiImage: image!)
                 .resizable()
                 .scaledToFill()
                 .frame(width: 50, height: 50)

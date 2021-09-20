@@ -265,7 +265,6 @@
 				4526ECFC26EDCE0A0030098D /* URLImage */,
 				4526ECF726EDC7BC0030098D /* ListView */,
 				4526ECF226EDC0EC0030098D /* LiveTextField */,
-				45ADD6B226F823AF000F0780 /* ShimmeringRect.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -302,6 +301,7 @@
 		4526ED0326EDD7BA0030098D /* ListItem */ = {
 			isa = PBXGroup;
 			children = (
+				45ADD6B226F823AF000F0780 /* ShimmeringRect.swift */,
 				4526ED0426EDD7C90030098D /* ListItem.swift */,
 			);
 			path = ListItem;
