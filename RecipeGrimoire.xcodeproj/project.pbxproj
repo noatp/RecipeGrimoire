@@ -38,6 +38,7 @@
 		45AC582C26F115CE00251239 /* RecipeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AC582B26F115CE00251239 /* RecipeDTO.swift */; };
 		45ADD6AC26F7D321000F0780 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ADD6AB26F7D321000F0780 /* TabView.swift */; };
 		45ADD6AF26F7D859000F0780 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ADD6AE26F7D859000F0780 /* Color.swift */; };
+		45ADD6B326F823AF000F0780 /* ShimmeringRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ADD6B226F823AF000F0780 /* ShimmeringRect.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		45AC582B26F115CE00251239 /* RecipeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDTO.swift; sourceTree = "<group>"; };
 		45ADD6AB26F7D321000F0780 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
 		45ADD6AE26F7D859000F0780 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		45ADD6B226F823AF000F0780 /* ShimmeringRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmeringRect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,6 +262,7 @@
 				4526ECFC26EDCE0A0030098D /* URLImage */,
 				4526ECF726EDC7BC0030098D /* ListView */,
 				4526ECF226EDC0EC0030098D /* LiveTextField */,
+				45ADD6B226F823AF000F0780 /* ShimmeringRect.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				4506ADE326EE817600FF1F6C /* DetailView.swift in Sources */,
 				4526ECE126EDADEC0030098D /* RecipeService.swift in Sources */,
 				4526ECAB26EDA4360030098D /* ContentView.swift in Sources */,
+				45ADD6B326F823AF000F0780 /* ShimmeringRect.swift in Sources */,
 				4526ECA926EDA4360030098D /* RecipeGrimoireApp.swift in Sources */,
 				4526ECDF26EDAD690030098D /* Response.swift in Sources */,
 				4526ECE826EDBAAC0030098D /* AppView.swift in Sources */,

@@ -14,7 +14,6 @@ struct DetailView: View {
     init(dependency: Dependency = Dependency.preview, recipe: RecipeDTO) {
         self.detailViewModel = dependency.detailViewModel
         self.recipe = recipe
-//        detailViewModel.isRecipeBookmarked(recipe: recipe)
     }
     
     var body: some View {
