@@ -25,14 +25,19 @@ struct BookmarkView: View {
                 .font(.largeTitle)
                 .fontWeight(.heavy)
             List{
-                ForEach(bookmarkViewModel.bookmarkedRecipeList) { bookmarkedRecipe in
-                    NavigationLink(
-                        destination: DetailView(dependency: .shared, recipe: bookmarkedRecipe),
-                        label: {
-                            ListItem(recipe: bookmarkedRecipe)
-                        }
-                    )
-                    .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+                if (bookmarkViewModel.bookmarkedRecipeList.isEmpty){
+                    noBookmarkText
+                }
+                else{
+                    ForEach(bookmarkViewModel.bookmarkedRecipeList) { bookmarkedRecipe in
+                        NavigationLink(
+                            destination: DetailView(dependency: .shared, recipe: bookmarkedRecipe),
+                            label: {
+                                ListItem(recipe: bookmarkedRecipe)
+                            }
+                        )
+                        .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+                    }
                 }
             }
             .listStyle(InsetListStyle())
@@ -42,6 +47,13 @@ struct BookmarkView: View {
         }
         .padding(.horizontal)
         .navigationBarHidden(true)
+    }
+    var noBookmarkText: some View{
+        HStack{
+            Spacer()
+            Text("No bookmark found...")
+            Spacer()
+        }
     }
 }
 

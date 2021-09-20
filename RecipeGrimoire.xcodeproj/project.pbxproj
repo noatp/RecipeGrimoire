@@ -39,6 +39,7 @@
 		45ADD6AC26F7D321000F0780 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ADD6AB26F7D321000F0780 /* TabView.swift */; };
 		45ADD6AF26F7D859000F0780 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ADD6AE26F7D859000F0780 /* Color.swift */; };
 		45ADD6B326F823AF000F0780 /* ShimmeringRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ADD6B226F823AF000F0780 /* ShimmeringRect.swift */; };
+		45ADD6B526F82C70000F0780 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45ADD6B426F82C70000F0780 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		45ADD6AB26F7D321000F0780 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
 		45ADD6AE26F7D859000F0780 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		45ADD6B226F823AF000F0780 /* ShimmeringRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmeringRect.swift; sourceTree = "<group>"; };
+		45ADD6B426F82C70000F0780 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +203,7 @@
 		4526ECD826EDAC580030098D /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				45ADD6B426F82C70000F0780 /* Launch Screen.storyboard */,
 				4506ADE126EE814400FF1F6C /* DetailView */,
 				452BAB2B26EEC8C800971BA7 /* BookmarkView */,
 				4526ECF126EDC0E40030098D /* Components */,
@@ -439,6 +442,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45ADD6B526F82C70000F0780 /* Launch Screen.storyboard in Resources */,
 				4526ECB026EDA4380030098D /* Preview Assets.xcassets in Resources */,
 				4526ECAD26EDA4380030098D /* Assets.xcassets in Resources */,
 			);
