@@ -15,7 +15,15 @@ struct SearchView: View {
     }
     
     var body: some View {
-        VStack{
+        VStack(alignment: .leading){
+            Image("titleLogo")
+                .resizable()
+                .padding(.top, 16.0)
+                .scaledToFit()
+                .frame(width: 150)
+            Text("Search")
+                .font(.largeTitle)
+                .fontWeight(.heavy)
             HStack{
                 Image(systemName: "magnifyingglass")
                 LiveTextField(dependency: Dependency.shared)
@@ -23,11 +31,14 @@ struct SearchView: View {
             ListView(dependency: Dependency.shared)
         }
         .padding(.horizontal)
+        .navigationBarHidden(true)
     }
 }
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView()
+        NavigationView{
+            SearchView()
+        }
     }
 }

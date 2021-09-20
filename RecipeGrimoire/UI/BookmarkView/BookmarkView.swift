@@ -15,25 +15,40 @@ struct BookmarkView: View {
     }
     
     var body: some View {
-        List{
-            ForEach(bookmarkViewModel.bookmarkedRecipeList) { bookmarkedRecipe in
-                NavigationLink(
-                    destination: DetailView(dependency: .shared, recipe: bookmarkedRecipe),
-                    label: {
-                        ListItem(recipe: bookmarkedRecipe)
-                    }
-                )
-                .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+        VStack(alignment: .leading){
+            Image("titleLogo")
+                .resizable()
+                .padding(.top, 16.0)
+                .scaledToFit()
+                .frame(width: 150)
+            Text("Bookmark")
+                .font(.largeTitle)
+                .fontWeight(.heavy)
+            List{
+                ForEach(bookmarkViewModel.bookmarkedRecipeList) { bookmarkedRecipe in
+                    NavigationLink(
+                        destination: DetailView(dependency: .shared, recipe: bookmarkedRecipe),
+                        label: {
+                            ListItem(recipe: bookmarkedRecipe)
+                        }
+                    )
+                    .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+                }
+            }
+            .listStyle(InsetListStyle())
+            .onAppear{
+                bookmarkViewModel.getAllBookmarkedRecipe()
             }
         }
-        .onAppear{
-            bookmarkViewModel.getAllBookmarkedRecipe()
-        }
+        .padding(.horizontal)
+        .navigationBarHidden(true)
     }
 }
 
 struct BookmarkView_Previews: PreviewProvider {
     static var previews: some View {
-        BookmarkView()
+        NavigationView{
+            BookmarkView()
+        }
     }
 }

@@ -15,7 +15,6 @@
 		4526ECAB26EDA4360030098D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4526ECAA26EDA4360030098D /* ContentView.swift */; };
 		4526ECAD26EDA4380030098D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4526ECAC26EDA4380030098D /* Assets.xcassets */; };
 		4526ECB026EDA4380030098D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4526ECAF26EDA4380030098D /* Preview Assets.xcassets */; };
-		4526ECB226EDA4380030098D /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4526ECB126EDA4380030098D /* Persistence.swift */; };
 		4526ECB526EDA4380030098D /* RecipeGrimoire.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4526ECB326EDA4380030098D /* RecipeGrimoire.xcdatamodeld */; };
 		4526ECC026EDA4390030098D /* RecipeGrimoireTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4526ECBF26EDA4390030098D /* RecipeGrimoireTests.swift */; };
 		4526ECCB26EDA4390030098D /* RecipeGrimoireUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4526ECCA26EDA4390030098D /* RecipeGrimoireUITests.swift */; };
@@ -38,6 +37,7 @@
 		45862BFD26EF14360066C459 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45862BFC26EF14360066C459 /* DetailViewModel.swift */; };
 		45AC582C26F115CE00251239 /* RecipeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AC582B26F115CE00251239 /* RecipeDTO.swift */; };
 		45ADD6AC26F7D321000F0780 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ADD6AB26F7D321000F0780 /* TabView.swift */; };
+		45ADD6AF26F7D859000F0780 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ADD6AE26F7D859000F0780 /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,7 +67,6 @@
 		4526ECAA26EDA4360030098D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4526ECAC26EDA4380030098D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4526ECAF26EDA4380030098D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		4526ECB126EDA4380030098D /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		4526ECB426EDA4380030098D /* RecipeGrimoire.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecipeGrimoire.xcdatamodel; sourceTree = "<group>"; };
 		4526ECB626EDA4380030098D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4526ECBB26EDA4390030098D /* RecipeGrimoireTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipeGrimoireTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,6 +94,7 @@
 		45862BFC26EF14360066C459 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		45AC582B26F115CE00251239 /* RecipeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDTO.swift; sourceTree = "<group>"; };
 		45ADD6AB26F7D321000F0780 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
+		45ADD6AE26F7D859000F0780 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +154,7 @@
 		4526ECA726EDA4360030098D /* RecipeGrimoire */ = {
 			isa = PBXGroup;
 			children = (
+				45ADD6AD26F7D850000F0780 /* Extension */,
 				452BAB3226EEFDA700971BA7 /* Repository */,
 				4526ECDB26EDAC6A0030098D /* Dependency */,
 				4526ECDA26EDAC620030098D /* Data */,
@@ -162,7 +163,6 @@
 				4526ECA826EDA4360030098D /* RecipeGrimoireApp.swift */,
 				4526ECAA26EDA4360030098D /* ContentView.swift */,
 				4526ECAC26EDA4380030098D /* Assets.xcassets */,
-				4526ECB126EDA4380030098D /* Persistence.swift */,
 				4526ECB626EDA4380030098D /* Info.plist */,
 				4526ECB326EDA4380030098D /* RecipeGrimoire.xcdatamodeld */,
 				4526ECAE26EDA4380030098D /* Preview Content */,
@@ -325,6 +325,14 @@
 			path = TabView;
 			sourceTree = "<group>";
 		};
+		45ADD6AD26F7D850000F0780 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				45ADD6AE26F7D859000F0780 /* Color.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -460,9 +468,9 @@
 				4506ADE526EE849300FF1F6C /* URLImage.swift in Sources */,
 				4506ADE726EE854F00FF1F6C /* URLImageViewModel.swift in Sources */,
 				452BAB2F26EECD3A00971BA7 /* Database.swift in Sources */,
-				4526ECB226EDA4380030098D /* Persistence.swift in Sources */,
 				4506ADE926EE88A500FF1F6C /* URLImageManager.swift in Sources */,
 				4526ECB526EDA4380030098D /* RecipeGrimoire.xcdatamodeld in Sources */,
+				45ADD6AF26F7D859000F0780 /* Color.swift in Sources */,
 				452BAB2D26EEC91700971BA7 /* BookmarkView.swift in Sources */,
 				4526ECE426EDBA350030098D /* AppViewModel.swift in Sources */,
 				4526ECF026EDC0A70030098D /* SearchView.swift in Sources */,

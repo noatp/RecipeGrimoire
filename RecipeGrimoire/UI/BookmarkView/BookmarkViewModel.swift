@@ -10,7 +10,7 @@ import Combine
 
 class BookmarkViewModel: ObservableObject{
     @Published var bookmarkedRecipeList: [RecipeDTO] = []
-    
+            
     //dependencies
     private let database: Database
     

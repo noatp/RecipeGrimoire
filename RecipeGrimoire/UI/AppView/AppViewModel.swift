@@ -8,7 +8,7 @@
 import Foundation
 
 class AppViewModel: ObservableObject{
-    @Published var selectedTab: Tab = .bookmark
+    @Published var selectedTab: Tab = .search
     
     enum Tab{
         case search

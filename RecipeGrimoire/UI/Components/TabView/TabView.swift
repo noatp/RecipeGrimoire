@@ -10,36 +10,40 @@
 //struct TabView: View {
 //    typealias Tab = AppViewModel.Tab
 //    @Binding var tab: Tab
-//    
+//
 //    var body: some View {
 //        HStack {
-//            Group {
-//                Spacer()
-//                                
-//                Button (action: {
-//                    self.tab = .search
-//                }) {
-//                    Label("Search", systemImage: "magnifyingglass")
+//            Button (action: {
+//                self.tab = .search
+//            }) {
+//                VStack{
+//                    Image(systemName: "magnifyingglass")
+//                    Text("Search")
 //                }
-//                .foregroundColor(self.tab == .search ? .blue : .secondary)
-//                
-//                Spacer()
-//                
-//                Button (action: {
-//                    self.tab = .bookmark
-//                }) {
-//                    Label("Bookmark", systemImage: "bookmark")
-//                }
-//                .foregroundColor(self.tab == .bookmark ? .blue : .secondary)
-//                
-//                Spacer()
 //            }
+//            .foregroundColor(self.tab == .search ? .blue : .secondary)
+//            .frame(maxWidth: .infinity)
+//            .padding(.vertical, 4)
+//
+//            Button (action: {
+//                self.tab = .bookmark
+//            }) {
+//                VStack{
+//                    Image(systemName: "bookmark")
+//                    Text("Bookmark")
+//                }
+//                
+//            }
+//            .foregroundColor(self.tab == .bookmark ? .blue : .secondary)
+//            .frame(maxWidth: .infinity)
+//            .padding(.vertical, 4)
 //        }
-//        .padding(.bottom, 30)
-//        .padding(.top, 10)
-//        .background(Color(red: 0.8, green: 0.8, blue: 0.8))
-//        .font(.system(size: 30))
-//        .frame(height: 80)
+//        .background(Color.theme.background.opacity(0.1))
+//        .frame(
+//            maxWidth: .infinity
+//        )
+//        .cornerRadius(20)
+//
 //    }
 //}
 //
@@ -48,6 +52,8 @@
 //        Group{
 //            TabView(tab: .constant(.search))
 //            TabView(tab: .constant(.bookmark))
+//                .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
 //        }
+//        .previewLayout(.sizeThatFits)
 //    }
 //}
