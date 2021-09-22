@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class BookmarkViewModel: ObservableObject{
-    @Published var bookmarkedRecipeList: [RecipeDTO] = []
+    @Published var bookmarkedRecipeList: [Recipe] = []
             
     //dependencies
     private let database: Database

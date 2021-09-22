@@ -10,9 +10,9 @@ import SwiftUI
 struct ListItem: View {
     @ObservedObject private var urlImageViewModel: URLImageViewModel
     @State private var image: UIImage?
-    private var recipe: RecipeDTO
+    private var recipe: Recipe
     
-    init(recipe: RecipeDTO){
+    init(recipe: Recipe){
         urlImageViewModel = URLImageManager.shared.getURLImageViewModel(url: recipe.featuredImage)
         self.recipe = recipe
     }
@@ -67,7 +67,7 @@ struct ListItem: View {
 
 struct ListItem_Previews: PreviewProvider {
     static var previews: some View {
-        ListItem(recipe: RecipeDTO.preview)
+        ListItem(recipe: Recipe.preview)
             .previewLayout(.sizeThatFits)
     }
 }

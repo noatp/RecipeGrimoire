@@ -36,7 +36,7 @@ class ListViewModel: ObservableObject{
     struct ListViewState{
         var isLoading: Bool
         var moreRecipeAvailable: Bool
-        var recipeList: [RecipeDTO]
+        var recipeList: [Recipe]
         
         static let empty = ListViewState(isLoading: true, moreRecipeAvailable: false, recipeList: [])
     }

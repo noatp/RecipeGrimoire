@@ -76,7 +76,7 @@ class RecipeService{
                     self?.fetchRecipesState = FetchRecipesState(
                         isLoading: false,
                         moreRecipeAvailable: Bool(self?.nextPageUrl == "") ? false : true,
-                        recipeList: self?.recipeList.toRecipeDTOList() ?? []
+                        recipeList: self?.recipeList ?? []
                     )
                 }
             )
@@ -85,7 +85,7 @@ class RecipeService{
     struct FetchRecipesState{
         var isLoading: Bool
         var moreRecipeAvailable: Bool
-        var recipeList: [RecipeDTO]
+        var recipeList: [Recipe]
         
         static let empty = FetchRecipesState(isLoading: true, moreRecipeAvailable: false, recipeList: [])
     }

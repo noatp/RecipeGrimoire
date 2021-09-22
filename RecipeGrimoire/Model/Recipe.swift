@@ -42,4 +42,36 @@ struct Recipe: Codable, Identifiable {
         ]
     )
     static let previewList = [preview, preview, preview]
+    
+    func toRecipeEntity() -> RecipeEntity{
+        let newRecipeEntity = RecipeEntity(context: Database.persistentContainer.viewContext)
+        newRecipeEntity.id = Int64(self.id)
+        newRecipeEntity.title = self.title
+        newRecipeEntity.publisher = self.publisher
+        newRecipeEntity.featuredImage = self.featuredImage
+        newRecipeEntity.sourceURL = self.sourceURL
+        newRecipeEntity.ingredients = self.ingredients
+        return newRecipeEntity
+    }
+    static func fromRecipeEntity(_ recipeEntity: RecipeEntity) -> Recipe{
+        return Recipe(
+            id: Int(recipeEntity.id),
+            title: recipeEntity.title!,
+            publisher: recipeEntity.publisher!,
+            featuredImage: recipeEntity.featuredImage!,
+            sourceURL: recipeEntity.sourceURL!,
+            ingredients: recipeEntity.ingredients!
+        )
+    }
 }
+
+extension Collection where Element == RecipeEntity{
+    func toRecipeList() -> [Recipe]{
+        self.map { recipeEntity in
+            Recipe.fromRecipeEntity(recipeEntity)
+        }
+    }
+}
+
+    
+

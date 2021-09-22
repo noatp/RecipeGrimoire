@@ -18,12 +18,12 @@ class DetailViewModel: ObservableObject{
         self.isBookmarked = false
     }
     
-    func bookmarkRecipe(recipe: RecipeDTO){
+    func bookmarkRecipe(recipe: Recipe){
         database.bookmarkRecipe(recipe: recipe)
         checkIfRecipeIsBookmarked(recipe: recipe)
     }
     
-    func toggleBookmark(recipe: RecipeDTO){
+    func toggleBookmark(recipe: Recipe){
         if !isBookmarked{
             database.bookmarkRecipe(recipe: recipe)
         }
@@ -33,7 +33,7 @@ class DetailViewModel: ObservableObject{
         checkIfRecipeIsBookmarked(recipe: recipe)
     }
     
-    func checkIfRecipeIsBookmarked(recipe: RecipeDTO){
+    func checkIfRecipeIsBookmarked(recipe: Recipe){
         isBookmarked = database.checkIfRecipeIsBookmarked(recipe: recipe)
     }
     

@@ -25,18 +25,18 @@ class Database{
     
     //CRUD
     //create
-    func bookmarkRecipe(recipe: RecipeDTO){
+    func bookmarkRecipe(recipe: Recipe){
         let _ = recipe.toRecipeEntity()
         saveViewContext()
 //        getAllBookmarkedRecipe()
     }
     
     //read multiple
-    func getAllBookmarkedRecipe() -> [RecipeDTO]{
+    func getAllBookmarkedRecipe() -> [Recipe]{
         let request: NSFetchRequest<RecipeEntity> = RecipeEntity.fetchRequest()
         do{
             let recipeEntities = try viewContext.fetch(request)
-            return recipeEntities.toRecipeDTOList()
+            return recipeEntities.toRecipeList()
         } catch {
             print(error)
         }
@@ -44,7 +44,7 @@ class Database{
     }
     
     //read single
-    func checkIfRecipeIsBookmarked(recipe: RecipeDTO) -> Bool{
+    func checkIfRecipeIsBookmarked(recipe: Recipe) -> Bool{
         let request: NSFetchRequest<RecipeEntity> = RecipeEntity.fetchRequest()
         request.predicate = NSPredicate(format: "title == %@", recipe.title)
         do{
@@ -59,7 +59,7 @@ class Database{
     }
         
     //delete
-    func removeBookmark(recipe: RecipeDTO){
+    func removeBookmark(recipe: Recipe){
         let request: NSFetchRequest<RecipeEntity> = RecipeEntity.fetchRequest()
         request.predicate = NSPredicate(format: "title == %@", recipe.title)
         do{

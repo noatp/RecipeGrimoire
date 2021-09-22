@@ -35,7 +35,7 @@ class MockRecipeService: RecipeService{
             initFetchRecipesState: FetchRecipesState(
                 isLoading: isLoading,
                 moreRecipeAvailable: moreRecipeAvailable,
-                recipeList: RecipeDTO.previewList
+                recipeList: Recipe.previewList
             )
         )
     }
