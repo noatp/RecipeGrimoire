@@ -10,6 +10,8 @@ This app will use URLSession to send HTTP requests to [Food2Fork API](https://fo
 
 ![RecipeGrimoireDemo](/RecipeGrimoire/Demo/demo.gif)
 
+<img src="/RecipeGrimoire/Demo/demo.gif" height="50%"/>
+
 ## Author
 
 Toan Pham
