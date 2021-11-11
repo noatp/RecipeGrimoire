@@ -25,6 +25,7 @@ struct AppView: View {
                     .tabItem { Label("Bookmark", systemImage: "bookmark") }
                     .tag(Tab.bookmark)
             }
+            .tabViewStyle(PageTabViewStyle())
         }
     }
 }
